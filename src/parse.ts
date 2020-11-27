@@ -1,6 +1,7 @@
 import { Payload, PayloadFilm, PayloadSession } from './scrape';
 
 // Conditions
+export const CONDITION_ALLOCATED_SEATING = 'Allocated seating';
 export const CONDITION_NO_FREE_TICKETS = 'No free tickets';
 export const CONDITION_PREVIEW_SCREENING = 'Preview Screening';
 export const CONDITION_SPECIAL_EVENT = 'Special Event';
@@ -26,6 +27,7 @@ export interface Session {
   filmId: string;
   date: string;
   time: number;
+  isAllocatedSeating: boolean;
   isNoFreeTickets: boolean;
   isPreviewScreening: boolean;
   isSpecialEvent: boolean;
@@ -94,7 +96,8 @@ export const parseSessionUrl = ({ url: input }: Pick<PayloadSession, 'url'>): Pi
   return { id };
 };
 
-export const parseSessionConditions = ({ conditions: input }: Pick<PayloadSession, 'conditions'>): Pick<Session, 'isNoFreeTickets' | 'isPreviewScreening' | 'isSpecialEvent' | 'isBabyFriendly'> => ({
+export const parseSessionConditions = ({ conditions: input }: Pick<PayloadSession, 'conditions'>): Pick<Session, 'isAllocatedSeating' | 'isNoFreeTickets' | 'isPreviewScreening' | 'isSpecialEvent' | 'isBabyFriendly'> => ({
+  isAllocatedSeating: input.includes(CONDITION_ALLOCATED_SEATING),
   isNoFreeTickets: input.includes(CONDITION_NO_FREE_TICKETS),
   isPreviewScreening: input.includes(CONDITION_PREVIEW_SCREENING),
   isSpecialEvent: input.includes(CONDITION_SPECIAL_EVENT),
