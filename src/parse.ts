@@ -46,7 +46,7 @@ export interface Film {
 /** https://regex101.com/r/KYKFSg/1 */
 const titleExpr = /^(.*?)\s?(?:\(\s?([\w+]*?)\s?\))?\s?(?: - (\d+) MIN)?$/;
 const timeExpr = /^(\d+):(\d{2})(am|pm)$/;
-const sessionIdExpr = /txtSessionId=(\d+)/;
+const sessionIdExpr = /(?:txtSessionId|sessionId)=(\d+)/;
 const filmIdExpr = /\/movies\/(.*)/;
 
 export const parseFilmTitle = (payloadFilm: Pick<PayloadFilm, 'title'>): Pick<Film, 'title' | 'rating' | 'runtimeMinutes'> => {
