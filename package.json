@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
+    "fetch": "ts-node lib/fetch.ts",
     "parse": "ts-node lib/parse.ts",
     "start": "node --inspect=5858 -r ts-node/register . localhost 8080",
     "start:watch": "nodemon",
