@@ -2,7 +2,7 @@ import { JSDOM } from 'jsdom';
 import { scrapeSessionData } from '../src/scrape';
 import { parseSessionData } from '../src/parse';
 
-let text: string;
+let text = '';
 
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
