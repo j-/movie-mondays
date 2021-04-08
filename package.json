@@ -5,6 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
+    "parse": "ts-node lib/parse.ts",
     "start": "node --inspect=5858 -r ts-node/register . localhost 8080",
     "start:watch": "nodemon",
     "test": "jest --watchAll"
@@ -18,7 +19,7 @@
     "jsdom": "15.1.1",
     "node-fetch": "2.6.0",
     "ts-jest": "24.0.2",
-    "ts-node": "latest",
+    "ts-node": "^9.0.0",
     "typescript": "3.6.3"
   },
   "devDependencies": {
