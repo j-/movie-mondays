@@ -19,11 +19,13 @@
     "jest": "^26.6.3",
     "jsdom": "15.1.1",
     "node-fetch": "^2.6.1",
+    "sqlite3": "^5.0.2",
     "ts-jest": "^26.5.4",
     "ts-node": "^9.0.0",
     "typescript": "^4.2.4"
   },
   "devDependencies": {
+    "@types/sqlite3": "^3.1.7",
     "nodemon": "1.18.4"
   },
   "keywords": [],
