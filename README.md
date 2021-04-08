@@ -16,3 +16,10 @@ Reads a session times page from stdin and extracts film and session information.
 
     $ npm run parse -s < ./test/res/2021-04-08_18-59.html
     $ npm run fetch -s | npm run parse -s
+
+Create database
+---------------
+
+Initializes a new SQLite database at the given path.
+
+    $ npm run db-create -- foo.sqlite
