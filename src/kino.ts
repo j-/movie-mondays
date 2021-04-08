@@ -12,7 +12,7 @@ export const getData = async () => {
   let text: string;
 
   if (IS_DEBUG) {
-    text = await fs.promises.readFile(__dirname + '/../test/res/2019-09-16.html', 'utf-8');
+    text = await fs.promises.readFile(__dirname + '/../test/res/2019-09-16_00-00.html', 'utf-8');
   } else {
     const res = await fetch(URL);
     text = await res.text();
