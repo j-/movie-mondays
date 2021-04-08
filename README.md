@@ -23,3 +23,11 @@ Create database
 Initializes a new SQLite database at the given path.
 
     $ npm run db-create -- foo.sqlite
+
+Insert data
+-----------
+
+Puts session data into a SQLite database at the given path.
+
+    $ npm run db-insert -- database.sqlite < parsed-data.json
+    $ npm run fetch -s | npm run parse -s | npm run db-insert -- foo.sqlite
