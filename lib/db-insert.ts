@@ -4,7 +4,7 @@ import { NormalizedSessionData } from '../src/parse';
 import { insertAllEntities } from '../src/db';
 
 if (process.argv.length < 3) {
-  console.error('Usage: npm run db-insert -- database.sql < parsed-data.json');
+  console.error('Usage: npm run db-insert -- database.sqlite < parsed-data.json');
   process.exit(1);
 }
 
