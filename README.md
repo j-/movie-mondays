@@ -31,3 +31,10 @@ Puts session data into a SQLite database at the given path.
 
     $ npm run db-insert -- database.sqlite < parsed-data.json
     $ npm run fetch -s | npm run parse -s | npm run db-insert -- foo.sqlite
+
+Update database
+---------------
+
+Performs a fetch, parse and database insert all in one step.
+
+    $ npm run db-update -- database.sqlite

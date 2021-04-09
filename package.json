@@ -7,6 +7,7 @@
     "build": "tsc",
     "db-create": "ts-node lib/db-create.ts",
     "db-insert": "ts-node lib/db-insert.ts",
+    "db-update": "ts-node lib/db-update.ts",
     "fetch": "ts-node lib/fetch.ts",
     "parse": "ts-node lib/parse.ts",
     "start": "node --inspect=5858 -r ts-node/register . localhost 8080",
