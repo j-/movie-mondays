@@ -1,0 +1,54 @@
+{
+  "name": "@mm/data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "db-create": "ts-node lib/db-create.ts",
+    "db-insert": "ts-node lib/db-insert.ts",
+    "db-update": "ts-node lib/db-update.ts",
+    "fetch": "ts-node lib/fetch.ts",
+    "parse": "ts-node lib/parse.ts",
+    "start": "node --inspect=5858 -r ts-node/register . localhost 8080",
+    "start:watch": "nodemon",
+    "test": "jest --watchAll"
+  },
+  "dependencies": {
+    "@types/better-sqlite3": "^5.4.1",
+    "@types/jest": "^26.0.22",
+    "@types/jsdom": "12.2.4",
+    "@types/node": "12.7.5",
+    "@types/node-fetch": "2.5.0",
+    "better-sqlite3": "^7.1.4",
+    "jest": "^26.6.3",
+    "jsdom": "15.1.1",
+    "node-fetch": "^2.6.1",
+    "ts-jest": "^26.5.4",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.2.4"
+  },
+  "keywords": [],
+  "jest": {
+    "roots": [
+      "<rootDir>/src",
+      "<rootDir>/test"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
+  }
+}
