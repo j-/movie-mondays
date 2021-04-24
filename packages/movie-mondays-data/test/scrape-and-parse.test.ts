@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import { resolve } from 'path';
 import { JSDOM } from 'jsdom';
-import { scrapeSessionData } from '../src/scrape';
-import { parseSessionData } from '../src/parse';
+import { scrapeSessionData } from '../scrape';
+import { parseSessionData } from '../parse';
 
 test.each([
   ['2019-09-11_00-00', 48, 343],
