@@ -1,13 +1,13 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
+import Database from 'better-sqlite3';
+import { Film, getAllFilms } from 'movie-mondays-data';
 
-import { User } from '../../interfaces';
-import { sampleUserData } from '../../utils/sample-data';
 import Layout from '../../components/Layout';
 import ListDetail from '../../components/ListDetail';
 
 type Props = {
-  item?: User
-  errors?: string
+  item?: Film;
+  errors?: string;
 }
 
 const StaticPropsDetail = ({ item, errors }: Props) => {
@@ -24,7 +24,7 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
   return (
     <Layout
       title={`${
-        item ? item.name : 'User Detail'
+        item ? item.title : 'Film detail'
       } | Next.js + TypeScript Example`}
     >
       {item && <ListDetail item={item} />}
@@ -35,9 +35,10 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
 export default StaticPropsDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Get the paths we want to pre-render based on users
-  const paths = sampleUserData.map((user) => ({
-    params: { id: user.id.toString() },
+  const db = new Database('../../database.sqlite');
+  // Get the paths we want to pre-render based on films
+  const paths = (await getAllFilms(db)).map((film) => ({
+    params: { id: film.id.toString() },
   }));
 
   // We'll pre-render only these paths at build time.
@@ -50,8 +51,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // direct database queries.
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
+    const db = new Database('../../database.sqlite');
     const id = params?.id;
-    const item = sampleUserData.find((data) => data.id === Number(id));
+    const item = (await getAllFilms(db)).find((data) => data.id === id);
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
     return { props: { item } };

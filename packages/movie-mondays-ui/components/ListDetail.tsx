@@ -1,15 +1,14 @@
 import * as React from 'react';
+import { Film } from 'movie-mondays-data';
 
-import { User } from '../interfaces';
-
-type ListDetailProps = {
-  item: User
+type Props = {
+  item: Film;
 }
 
-const ListDetail = ({ item: user }: ListDetailProps) => (
+const ListDetail: React.FC<Props> = ({ item: film }) => (
   <div>
-    <h1>Detail for {user.name}</h1>
-    <p>ID: {user.id}</p>
+    <h1>Detail for {film.title}</h1>
+    <p>ID: {film.id}</p>
   </div>
 );
 

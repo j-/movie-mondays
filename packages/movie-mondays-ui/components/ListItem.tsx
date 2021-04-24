@@ -1,16 +1,15 @@
 import React from 'react';
 import Link from 'next/link';
-
-import { User } from '../interfaces';
+import { Film } from 'movie-mondays-data';
 
 type Props = {
-  data: User
+  data: Film;
 }
 
-const ListItem = ({ data }: Props) => (
-  <Link href="/users/[id]" as={`/users/${data.id}`}>
+const ListItem: React.FC<Props> = ({ data }) => (
+  <Link href="/films/[id]" as={`/films/${data.id}`}>
     <a>
-      {data.id}: {data.name}
+      {data.id}: {data.title}
     </a>
   </Link>
 );
