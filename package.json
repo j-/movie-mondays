@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "dev": "cd packages/movie-mondays-ui && npm run dev",
     "link-convert": "lerna link convert"
   },
   "devDependencies": {
