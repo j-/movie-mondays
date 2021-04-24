@@ -1,4 +1,4 @@
-import { Film } from 'movie-mondays-data';
+import { Film } from 'movie-mondays-types';
 
 const canonicalExpr = /^(?:(The) )(.*?)$/;
 
