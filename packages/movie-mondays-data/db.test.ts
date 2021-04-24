@@ -6,6 +6,7 @@ import {
   getAllFilms,
   getAllSessions,
   getFilm,
+  getFilmsAfterDate,
   getSessionsForFilm,
   insertAllEntities,
   insertFilms,
@@ -31,7 +32,7 @@ const supernova: Film = {
 const minariSession1: Session = {
   id: '1',
   filmId: 'minari',
-  date: '2020-04-24',
+  date: '2021-04-24',
   time: 1200,
   isAllocatedSeating: false,
   isBabyFriendly: false,
@@ -45,7 +46,7 @@ const minariSession1: Session = {
 const minariSession2: Session = {
   id: '2',
   filmId: 'minari',
-  date: '2020-04-24',
+  date: '2021-04-24',
   time: 1300,
   isAllocatedSeating: false,
   isBabyFriendly: false,
@@ -59,7 +60,7 @@ const minariSession2: Session = {
 const supernovaSession1: Session = {
   id: '3',
   filmId: 'supernova',
-  date: '2020-04-24',
+  date: '2021-04-25',
   time: 1400,
   isAllocatedSeating: false,
   isBabyFriendly: false,
@@ -96,6 +97,12 @@ describe('films', () => {
 
   test('query film with invalid ID', async () => {
     expect(await getFilm(db, 'foobar')).toBeUndefined();
+  });
+
+  test('get films with sessions after a certain date', async () => {
+    insertFilms(db, [minari, supernova]);
+    insertSessions(db, [minariSession1, minariSession2, supernovaSession1]);
+    expect(await getFilmsAfterDate(db, '2021-04-25')).toEqual([supernova]);
   });
 });
 

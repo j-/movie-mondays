@@ -36,6 +36,17 @@ export const QUERY_FILM = `
   WHERE id = $filmId
 `;
 
+export const QUERY_FILMS_AFTER_DATE = `
+  SELECT DISTINCT
+    film.id,
+    film.title,
+    film.rating,
+    film.runtimeMinutes
+  FROM film
+  JOIN session ON film.id = session.filmId
+  WHERE session.date >= $sessionDate
+`;
+
 export const CREATE_TABLE_SESSION = `
   CREATE TABLE \`session\` (
     \`id\` INTEGER NOT NULL UNIQUE,

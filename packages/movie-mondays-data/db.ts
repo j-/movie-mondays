@@ -4,6 +4,7 @@ import {
   INSERT_SESSION,
   QUERY_FILM_SESSIONS,
   QUERY_FILM,
+  QUERY_FILMS_AFTER_DATE,
   QUERY_FILMS,
   QUERY_SESSIONS,
 } from 'movie-mondays-db-queries';
@@ -46,6 +47,17 @@ export const getFilm = async (db: Database, filmId: string): Promise<Film | unde
     runtimeMinutes: Number(row.runtimeMinutes),
   };
   return film;
+};
+
+export const getFilmsAfterDate = async (db: Database, sessionDate: string): Promise<Film[]> => {
+  const stmt = db.prepare(QUERY_FILMS_AFTER_DATE);
+  const data = stmt.all({ sessionDate }).map<Film>((row) => ({
+    id: String(row.id),
+    title: String(row.title),
+    rating: String(row.rating),
+    runtimeMinutes: Number(row.runtimeMinutes),
+  }));
+  return data;
 };
 
 export const insertSessions = (db: Database, sessions: Session[]): void => {
