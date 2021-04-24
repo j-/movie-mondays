@@ -91,12 +91,12 @@ export const parseSessionCapacity = ({ capacity: input }: Pick<PayloadSession, '
   isSoldOut: input.includes(CAPACITY_SOLD_OUT),
 });
 
-export const parseFilm = (payloadFilm: PayloadFilm) => ({
+export const parseFilm = (payloadFilm: PayloadFilm): Film => ({
   ...parseFilmTitle(payloadFilm),
   ...parseFilmUrl(payloadFilm),
 });
 
-export const parseSession = (payloadSession: PayloadSession) => ({
+export const parseSession = (payloadSession: PayloadSession): Omit<Session, 'filmId' | 'date'> => ({
   ...parseSessionUrl(payloadSession),
   ...parseSessionTime(payloadSession),
   ...parseSessionConditions(payloadSession),
@@ -104,10 +104,13 @@ export const parseSession = (payloadSession: PayloadSession) => ({
 });
 
 export const parseSessionData = (payload: Payload): NormalizedSessionData => {
-  const sessions: NormalizedSessionData['entities']['sessions'] = {};
-  const films: NormalizedSessionData['entities']['films'] = {};
-  const entities: NormalizedSessionData['entities'] = { sessions, films };
-  const result: NormalizedSessionData['result'] = [];
+  const data: NormalizedSessionData = {
+    result: [],
+    entities: {
+      sessions: {},
+      films: {},
+    },
+  };
   for (const payloadDay of payload) {
     for (const payloadFilm of payloadDay.films) {
       const film: Film = parseFilm(payloadFilm);
@@ -117,12 +120,12 @@ export const parseSessionData = (payload: Payload): NormalizedSessionData => {
           filmId: film.id,
           date: payloadDay.day,
         };
-        result.push(session.id);
-        sessions[session.id] = session;
+        data.result.push(session.id);
+        data.entities.sessions[session.id] = session;
       }
-      films[film.id] = film;
+      data.entities.films[film.id] = film;
     }
   }
-  result.sort();
-  return { result, entities };
+  data.result.sort();
+  return data;
 };
