@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "movie-mondays-data": "file:packages/movie-mondays-data",
+    "movie-mondays-db-queries": "file:packages/movie-mondays-db-queries",
     "movie-mondays-scripts": "file:packages/movie-mondays-scripts",
     "movie-mondays-ui": "file:packages/movie-mondays-ui"
   }
