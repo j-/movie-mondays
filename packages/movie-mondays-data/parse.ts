@@ -134,10 +134,10 @@ export interface NormalizedSessionData {
 }
 
 export const parseSessionData = (payload: Payload): NormalizedSessionData => {
-  const sessions = {};
-  const films = {};
-  const entities = { sessions, films };
-  const result = [];
+  const sessions: NormalizedSessionData['entities']['sessions'] = {};
+  const films: NormalizedSessionData['entities']['films'] = {};
+  const entities: NormalizedSessionData['entities'] = { sessions, films };
+  const result: NormalizedSessionData['result'] = [];
   for (const payloadDay of payload) {
     for (const payloadFilm of payloadDay.films) {
       const film: Film = parseFilm(payloadFilm);
