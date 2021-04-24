@@ -14,7 +14,7 @@ type Props = {
 const StaticPropsDetail: React.FC<Props> = ({ film, sessions, errors }) => {
   if (errors || !film || !sessions) {
     return (
-      <Layout title="Error | Next.js + TypeScript Example">
+      <Layout title="Error | Movie Mondays">
         <p>
           <span style={{ color: 'red' }}>Error:</span> {errors}
         </p>
@@ -23,7 +23,7 @@ const StaticPropsDetail: React.FC<Props> = ({ film, sessions, errors }) => {
   }
 
   return (
-    <Layout title={`${film.title} | Next.js + TypeScript Example`}>
+    <Layout title={`${film.title} | Movie Mondays`}>
       {film && <FilmDetails film={film} sessions={sessions} />}
     </Layout>
   );

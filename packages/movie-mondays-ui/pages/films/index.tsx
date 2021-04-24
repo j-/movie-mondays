@@ -10,7 +10,7 @@ type Props = {
 }
 
 const FilmPage: React.FC<Props> = ({ items }) => (
-  <Layout title="Films List | Next.js + TypeScript Example">
+  <Layout title="Films | Movie Mondays">
     <h1>Films List</h1>
     <p>
       Example fetching data from inside <code>getStaticProps()</code>.
