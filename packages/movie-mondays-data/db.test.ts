@@ -1,6 +1,7 @@
 import Database from 'better-sqlite3';
 import { CREATE_TABLE_FILM, CREATE_TABLE_SESSION } from 'movie-mondays-db-queries';
 import {
+  getAllEntities,
   getAllFilms,
   getAllSessions,
   getFilm,
@@ -134,11 +135,17 @@ describe('entities', () => {
         },
       }
     });
-    expect(await getAllFilms(db)).toEqual(
-      expect.arrayContaining([minari, supernova])
-    );
-    expect(await getAllSessions(db)).toEqual(
-      expect.arrayContaining([minariSession1, minariSession2, supernovaSession1])
-    );
+    const result = await getAllEntities(db);
+    expect(result).toEqual({
+      films: {
+        minari,
+        supernova,
+      },
+      sessions: {
+        1: minariSession1,
+        2: minariSession2,
+        3: supernovaSession1,
+      },
+    });
   });
 });
