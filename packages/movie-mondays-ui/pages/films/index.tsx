@@ -16,7 +16,7 @@ const FilmPage: React.FC<Props> = ({ items }) => (
       Example fetching data from inside <code>getStaticProps()</code>.
     </p>
     <p>You are currently on: /films</p>
-    <FilmList items={items} />
+    <FilmList films={items} />
     <p>
       <Link href="/">
         <a>Go home</a>

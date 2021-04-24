@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "better-sqlite3": "^7.1.5",
+    "fuzzy-search": "^3.2.1",
     "movie-mondays-data": "file:../movie-mondays-data",
     "next": "latest",
     "react": "^17.0.1",
