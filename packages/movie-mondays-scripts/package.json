@@ -2,6 +2,7 @@
   "name": "movie-mondays-scripts",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
@@ -22,6 +23,5 @@
     "node-fetch": "^2.6.1",
     "ts-node": "^9.0.0",
     "typescript": "^4.2.4"
-  },
-  "keywords": []
+  }
 }

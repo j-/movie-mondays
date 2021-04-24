@@ -155,4 +155,4 @@ export const parseSessionData = (payload: Payload): NormalizedSessionData => {
   }
   result.sort();
   return { result, entities };
-}
+};

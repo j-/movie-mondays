@@ -1,4 +1,4 @@
-import { DOMWindow as Window } from 'jsdom'
+import { DOMWindow as Window } from 'jsdom';
 
 const getTextContent = <T extends Element>(el: T) => el.textContent.trim();
 
@@ -20,7 +20,7 @@ export interface PayloadDay {
   films: PayloadFilm[];
 }
 
-export interface Payload extends Array<PayloadDay> {}
+export type Payload = Array<PayloadDay>;
 
 const getSessionFromElement = (sessionElement: HTMLAnchorElement): PayloadSession => {
   const url = sessionElement.href;

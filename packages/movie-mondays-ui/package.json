@@ -1,6 +1,7 @@
 {
   "name": "with-typescript",
   "version": "1.0.0",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next",
     "build": "next build",
@@ -11,6 +12,5 @@
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
-  },
-  "license": "MIT"
+  }
 }

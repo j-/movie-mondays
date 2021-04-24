@@ -2,12 +2,35 @@
   "name": "movie-mondays-data",
   "version": "1.0.0",
   "description": "",
+  "keywords": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
     "start": "node --inspect=5858 -r ts-node/register . localhost 8080",
     "start:watch": "nodemon",
     "test": "jest --watchAll"
+  },
+  "nodemonConfig": {
+    "exec": "npm start",
+    "ext": "ts",
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ]
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src",
+      "<rootDir>/test"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
   },
   "dependencies": {
     "@types/better-sqlite3": "^5.4.1",
@@ -22,28 +45,5 @@
     "ts-jest": "^26.5.4",
     "ts-node": "^9.0.0",
     "typescript": "^4.2.4"
-  },
-  "keywords": [],
-  "jest": {
-    "roots": [
-      "<rootDir>/src",
-      "<rootDir>/test"
-    ],
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    }
-  },
-  "nodemonConfig": {
-    "ignore": [
-      "**/*.test.ts",
-      "**/*.spec.ts",
-      ".git",
-      "node_modules"
-    ],
-    "watch": [
-      "src"
-    ],
-    "exec": "npm start",
-    "ext": "ts"
   }
 }
