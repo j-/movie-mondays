@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
-import { scrapeSessionData } from '../src/scrape';
-import { parseSessionData } from '../src/parse';
+import { scrapeSessionData } from '@mm/data/src/scrape';
+import { parseSessionData } from '@mm/data/src/parse';
 
 let text = '';
 
