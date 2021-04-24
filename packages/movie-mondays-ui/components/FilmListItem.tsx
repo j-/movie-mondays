@@ -6,7 +6,7 @@ type Props = {
   data: Film;
 }
 
-const ListItem: React.FC<Props> = ({ data }) => (
+const FilmListItem: React.FC<Props> = ({ data }) => (
   <Link href="/films/[id]" as={`/films/${data.id}`}>
     <a>
       {data.title}
@@ -14,4 +14,4 @@ const ListItem: React.FC<Props> = ({ data }) => (
   </Link>
 );
 
-export default ListItem;
+export default FilmListItem;

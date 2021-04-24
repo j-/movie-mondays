@@ -31,6 +31,11 @@ export const QUERY_FILMS = `
   FROM film
 `;
 
+export const QUERY_FILM = `
+  ${QUERY_FILMS}
+  WHERE id = $filmId
+`;
+
 export const CREATE_TABLE_SESSION = `
   CREATE TABLE \`session\` (
     \`id\` INTEGER NOT NULL UNIQUE,
@@ -90,4 +95,9 @@ export const QUERY_SESSIONS = `
     isSellingFast,
     isSoldOut
   FROM session
+`;
+
+export const QUERY_FILM_SESSIONS = `
+  ${QUERY_SESSIONS}
+  WHERE filmId = $filmId
 `;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Film } from 'movie-mondays-data';
-import ListItem from './ListItem';
+import FilmListItem from './FilmListItem';
 
 type Props = {
   items: Film[];
@@ -16,14 +16,14 @@ const titleSort = ({ title: titleA }: Film, { title: titleB }: Film) => {
   }
 };
 
-const List: React.FC<Props> = ({ items }) => (
+const FilmList: React.FC<Props> = ({ items }) => (
   <ul>
     {items.sort(titleSort).map((item) => (
       <li key={item.id}>
-        <ListItem data={item} />
+        <FilmListItem data={item} />
       </li>
     ))}
   </ul>
 );
 
-export default List;
+export default FilmList;

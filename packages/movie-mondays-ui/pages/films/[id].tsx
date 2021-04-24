@@ -1,17 +1,18 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { Film, getAllFilms } from 'movie-mondays-data';
+import { Film, Session, getAllFilms, getFilm, getSessionsForFilm } from 'movie-mondays-data';
 
 import getDatabase from '../../db';
 import Layout from '../../components/Layout';
-import ListDetail from '../../components/ListDetail';
+import FilmDetails from '../../components/FilmDetails';
 
 type Props = {
-  item?: Film;
+  film?: Film;
+  sessions?: Session[];
   errors?: string;
 }
 
-const StaticPropsDetail = ({ item, errors }: Props) => {
-  if (errors) {
+const StaticPropsDetail: React.FC<Props> = ({ film, sessions, errors }) => {
+  if (errors || !film || !sessions) {
     return (
       <Layout title="Error | Next.js + TypeScript Example">
         <p>
@@ -22,12 +23,8 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
   }
 
   return (
-    <Layout
-      title={`${
-        item ? item.title : 'Film detail'
-      } | Next.js + TypeScript Example`}
-    >
-      {item && <ListDetail item={item} />}
+    <Layout title={`${film.title} | Next.js + TypeScript Example`}>
+      {film && <FilmDetails film={film} sessions={sessions} />}
     </Layout>
   );
 };
@@ -49,14 +46,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // This function gets called at build time on server-side.
 // It won't be called on client-side, so you can even do
 // direct database queries.
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   try {
     const db = getDatabase();
-    const id = params?.id;
-    const item = (await getAllFilms(db)).find((data) => data.id === id);
+    const id = String(params?.id);
+    const [film, sessions] = await Promise.all([
+      getFilm(db, id).then((films) => films.find((data) => data.id === id)),
+      getSessionsForFilm(db, id),
+    ]);
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
-    return { props: { item } };
+    return { props: { film, sessions } };
   } catch (err) {
     return { props: { errors: err.message } };
   }

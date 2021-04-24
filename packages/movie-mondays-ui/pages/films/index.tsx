@@ -3,20 +3,20 @@ import Link from 'next/link';
 import { Film, getAllFilms} from 'movie-mondays-data';
 import getDatabase from '../../db';
 import Layout from '../../components/Layout';
-import List from '../../components/List';
+import FilmList from '../../components/FilmList';
 
 type Props = {
   items: Film[]
 }
 
-const WithStaticProps: React.FC<Props> = ({ items }) => (
+const FilmPage: React.FC<Props> = ({ items }) => (
   <Layout title="Films List | Next.js + TypeScript Example">
     <h1>Films List</h1>
     <p>
       Example fetching data from inside <code>getStaticProps()</code>.
     </p>
     <p>You are currently on: /films</p>
-    <List items={items} />
+    <FilmList items={items} />
     <p>
       <Link href="/">
         <a>Go home</a>
@@ -31,4 +31,4 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
   return { props: { items } };
 };
 
-export default WithStaticProps;
+export default FilmPage;

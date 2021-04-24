@@ -2,6 +2,8 @@ import { Database } from 'better-sqlite3';
 import {
   INSERT_FILM,
   INSERT_SESSION,
+  QUERY_FILM_SESSIONS,
+  QUERY_FILM,
   QUERY_FILMS,
   QUERY_SESSIONS,
 } from 'movie-mondays-db-queries';
@@ -26,6 +28,19 @@ export const getAllFilms = (db: Database): Promise<Film[]> => {
   return new Promise<Film[]>((resolve) => {
     const stmt = db.prepare(QUERY_FILMS);
     const data = stmt.all().map<Film>((row) => ({
+      id: String(row.id),
+      title: String(row.title),
+      rating: String(row.rating),
+      runtimeMinutes: Number(row.runtimeMinutes),
+    }));
+    resolve(data);
+  });
+};
+
+export const getFilm = (db: Database, filmId: string): Promise<Film[]> => {
+  return new Promise<Film[]>((resolve) => {
+    const stmt = db.prepare(QUERY_FILM);
+    const data = stmt.all({ filmId }).map<Film>((row) => ({
       id: String(row.id),
       title: String(row.title),
       rating: String(row.rating),
@@ -61,6 +76,26 @@ export const getAllSessions = (db: Database): Promise<Session[]> => {
   return new Promise<Session[]>((resolve) => {
     const stmt = db.prepare(QUERY_SESSIONS);
     const data = stmt.all().map<Session>((row) => ({
+      id: String(row.id),
+      filmId: String(row.filmId),
+      date: String(row.date),
+      time: Number(row.time),
+      isAllocatedSeating: row.isAllocatedSeating === 1,
+      isNoFreeTickets: row.isNoFreeTickets === 1,
+      isPreviewScreening: row.isPreviewScreening === 1,
+      isSpecialEvent: row.isSpecialEvent === 1,
+      isBabyFriendly: row.isBabyFriendly === 1,
+      isSellingFast: row.isSellingFast === 1,
+      isSoldOut: row.isSoldOut === 1,
+    }));
+    resolve(data);
+  });
+};
+
+export const getSessionsForFilm = (db: Database, filmId: string): Promise<Session[]> => {
+  return new Promise<Session[]>((resolve) => {
+    const stmt = db.prepare(QUERY_FILM_SESSIONS);
+    const data = stmt.all({ filmId }).map<Session>((row) => ({
       id: String(row.id),
       filmId: String(row.filmId),
       date: String(row.date),
