@@ -37,16 +37,18 @@ export const getAllFilms = (db: Database): Promise<Film[]> => {
   });
 };
 
-export const getFilm = (db: Database, filmId: string): Promise<Film[]> => {
-  return new Promise<Film[]>((resolve) => {
+export const getFilm = (db: Database, filmId: string): Promise<Film | undefined> => {
+  return new Promise<Film | undefined>((resolve) => {
     const stmt = db.prepare(QUERY_FILM);
-    const data = stmt.all({ filmId }).map<Film>((row) => ({
+    const row = stmt.get({ filmId });
+    if (!row) resolve(undefined);
+    const film: Film = {
       id: String(row.id),
       title: String(row.title),
       rating: String(row.rating),
       runtimeMinutes: Number(row.runtimeMinutes),
-    }));
-    resolve(data);
+    };
+    resolve(film);
   });
 };
 

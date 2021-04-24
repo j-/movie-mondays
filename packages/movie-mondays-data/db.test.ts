@@ -80,42 +80,46 @@ afterEach(() => {
 });
 
 describe('films', () => {
-  test('insert and query all films', () => {
+  test('insert and query all films', async () => {
     insertFilms(db, [minari, supernova]);
-    expect(getAllFilms(db)).resolves.toEqual(
+    expect(await getAllFilms(db)).toEqual(
       expect.arrayContaining([minari, supernova])
     );
   });
 
-  test('insert and query individual films', () => {
+  test('insert and query individual films', async () => {
     insertFilms(db, [minari, supernova]);
-    expect(getFilm(db, 'minari')).resolves.toEqual([minari]);
-    expect(getFilm(db, 'supernova')).resolves.toEqual([supernova]);
+    expect(await getFilm(db, 'minari')).toEqual(minari);
+    expect(await getFilm(db, 'supernova')).toEqual(supernova);
+  });
+
+  test('query film with invalid ID', async () => {
+    expect(await getFilm(db, 'foobar')).toBeUndefined();
   });
 });
 
 describe('sessions', () => {
-  test('insert and query all sessions', () => {
+  test('insert and query all sessions', async () => {
     insertSessions(db, [minariSession1, minariSession2, supernovaSession1]);
-    expect(getAllSessions(db)).resolves.toEqual(
+    expect(await getAllSessions(db)).toEqual(
       expect.arrayContaining([minariSession1, minariSession2, supernovaSession1])
     );
   });
 
-  test('insert and query film sessions', () => {
+  test('insert and query film sessions', async () => {
     insertFilms(db, [minari, supernova]);
     insertSessions(db, [minariSession1, minariSession2, supernovaSession1]);
-    expect(getSessionsForFilm(db, 'minari')).resolves.toEqual(
+    expect(await getSessionsForFilm(db, 'minari')).toEqual(
       expect.arrayContaining([minariSession1, minariSession2])
     );
-    expect(getSessionsForFilm(db, 'supernova')).resolves.toEqual(
+    expect(await getSessionsForFilm(db, 'supernova')).toEqual(
       expect.arrayContaining([supernovaSession1])
     );
   });
 });
 
 describe('entities', () => {
-  test('insert and query entity data', () => {
+  test('insert and query entity data', async () => {
     insertAllEntities(db, {
       result: [],
       entities: {
@@ -130,10 +134,10 @@ describe('entities', () => {
         },
       }
     });
-    expect(getAllFilms(db)).resolves.toEqual(
+    expect(await getAllFilms(db)).toEqual(
       expect.arrayContaining([minari, supernova])
     );
-    expect(getAllSessions(db)).resolves.toEqual(
+    expect(await getAllSessions(db)).toEqual(
       expect.arrayContaining([minariSession1, minariSession2, supernovaSession1])
     );
   });

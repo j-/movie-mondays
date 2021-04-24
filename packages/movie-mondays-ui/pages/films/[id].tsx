@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     const db = getDatabase();
     const id = String(params?.id);
     const [film, sessions] = await Promise.all([
-      getFilm(db, id).then((films) => films.find((data) => data.id === id)),
+      getFilm(db, id),
       getSessionsForFilm(db, id),
     ]);
     // By returning { props: item }, the StaticPropsDetail component
