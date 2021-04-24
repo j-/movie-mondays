@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import Database from 'better-sqlite3';
 import { getAllFilms } from 'movie-mondays-data';
+import getDatabase from '../../../db';
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   try {
-    const db = new Database('../../database.sqlite');
+    const db = getDatabase();
     const films = await getAllFilms(db);
 
     if (!Array.isArray(films)) {

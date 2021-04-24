@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import Database from 'better-sqlite3';
 import { Film, getAllFilms} from 'movie-mondays-data';
+import getDatabase from '../../db';
 import Layout from '../../components/Layout';
 import List from '../../components/List';
 
@@ -26,7 +26,7 @@ const WithStaticProps: React.FC<Props> = ({ items }) => (
 );
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const db = new Database('../../database.sqlite');
+  const db = getDatabase();
   const items: Film[] = await getAllFilms(db);
   return { props: { items } };
 };
