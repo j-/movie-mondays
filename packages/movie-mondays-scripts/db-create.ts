@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { createDatabase } from 'movie-mondays-data/src/db';
+import { createDatabase } from 'movie-mondays-data/db';
 
 if (process.argv.length < 3) {
   console.error('Usage: npm run db-create -- <filename>');

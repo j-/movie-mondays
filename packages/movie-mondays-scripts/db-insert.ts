@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import * as Database from 'better-sqlite3';
-import { NormalizedSessionData } from 'movie-mondays-data/src/parse';
-import { insertAllEntities } from 'movie-mondays-data/src/db';
+import { NormalizedSessionData } from 'movie-mondays-data/parse';
+import { insertAllEntities } from 'movie-mondays-data/db';
 
 if (process.argv.length < 3) {
   console.error('Usage: npm run db-insert -- database.sqlite < parsed-data.json');

@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "main": "src/index.ts",
+  "main": "db-update.ts",
   "scripts": {
     "build": "tsc",
-    "db-create": "ts-node lib/db-create.ts",
-    "db-insert": "ts-node lib/db-insert.ts",
-    "db-update": "ts-node lib/db-update.ts",
-    "fetch": "ts-node lib/fetch.ts",
-    "parse": "ts-node lib/parse.ts"
+    "db-create": "ts-node db-create.ts",
+    "db-insert": "ts-node db-insert.ts",
+    "db-update": "ts-node db-update.ts",
+    "fetch": "ts-node fetch.ts",
+    "parse": "ts-node parse.ts"
   },
   "dependencies": {
     "@types/better-sqlite3": "^5.4.1",
