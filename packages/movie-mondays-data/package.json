@@ -1,5 +1,5 @@
 {
-  "name": "@mm/data",
+  "name": "movie-mondays-data",
   "version": "1.0.0",
   "description": "",
   "main": "src/index.ts",

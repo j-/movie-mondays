@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
-import { scrapeSessionData } from '@mm/data/src/scrape';
-import { parseSessionData } from '@mm/data/src/parse';
+import { scrapeSessionData } from 'movie-mondays-data/src/scrape';
+import { parseSessionData } from 'movie-mondays-data/src/parse';
 
 let text = '';
 

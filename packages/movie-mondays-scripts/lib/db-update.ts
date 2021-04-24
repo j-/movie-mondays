@@ -2,9 +2,9 @@ import { resolve } from 'path';
 import fetch, { Response } from 'node-fetch';
 import { JSDOM } from 'jsdom';
 import * as Database from 'better-sqlite3';
-import { scrapeSessionData } from '@mm/data/src/scrape';
-import { parseSessionData } from '@mm/data/src/parse';
-import { insertAllEntities } from '@mm/data/src/db';
+import { scrapeSessionData } from 'movie-mondays-data/src/scrape';
+import { parseSessionData } from 'movie-mondays-data/src/parse';
+import { insertAllEntities } from 'movie-mondays-data/src/db';
 
 if (process.argv.length < 3) {
   console.error('Usage: npm run db-update -- database.sqlite');
