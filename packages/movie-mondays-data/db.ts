@@ -25,7 +25,7 @@ export const insertFilms = (db: Database, films: Film[]): void => {
 export const getAllFilms = (db: Database): Promise<Film[]> => {
   return new Promise<Film[]>((resolve) => {
     const stmt = db.prepare(QUERY_FILMS);
-    const data = stmt.all(QUERY_FILMS).map<Film>((row) => ({
+    const data = stmt.all().map<Film>((row) => ({
       id: String(row.id),
       title: String(row.title),
       rating: String(row.rating),
@@ -60,7 +60,7 @@ export const insertSessions = (db: Database, sessions: Session[]): void => {
 export const getAllSessions = (db: Database): Promise<Session[]> => {
   return new Promise<Session[]>((resolve) => {
     const stmt = db.prepare(QUERY_SESSIONS);
-    const data = stmt.all(QUERY_SESSIONS).map<Session>((row) => ({
+    const data = stmt.all().map<Session>((row) => ({
       id: String(row.id),
       filmId: String(row.filmId),
       date: String(row.date),
