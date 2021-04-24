@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import fetch, { Response } from 'node-fetch';
 import { JSDOM } from 'jsdom';
-import * as Database from 'better-sqlite3';
+import Database from 'better-sqlite3';
 import { scrapeSessionData } from 'movie-mondays-data/scrape';
 import { parseSessionData } from 'movie-mondays-data/parse';
 import { insertAllEntities } from 'movie-mondays-data/db';

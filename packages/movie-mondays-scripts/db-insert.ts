@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import * as Database from 'better-sqlite3';
+import Database from 'better-sqlite3';
 import { NormalizedSessionData } from 'movie-mondays-data/parse';
 import { insertAllEntities } from 'movie-mondays-data/db';
 

@@ -1,8 +1,5 @@
-import Database from 'better-sqlite3';
-import { promises } from 'fs';
+import { Database } from 'better-sqlite3';
 import {
-  CREATE_TABLE_FILM,
-  CREATE_TABLE_SESSION,
   INSERT_FILM,
   INSERT_SESSION,
   QUERY_FILMS,
@@ -10,28 +7,7 @@ import {
 } from 'movie-mondays-db-queries';
 import { Film, Session, NormalizedSessionData } from './parse';
 
-export const createDatabase = async (path: string) => {
-  let shouldUnlink = true;
-
-  try {
-    await promises.access(path);
-  } catch (err) {
-    shouldUnlink = false;
-  } finally {
-    if (shouldUnlink) {
-      await promises.unlink(path);
-    }
-  }
-
-  const db = new Database(path);
-
-  db.exec(CREATE_TABLE_FILM);
-  db.exec(CREATE_TABLE_SESSION);
-
-  db.close();
-};
-
-export const insertFilms = (db: Database.Database, films: Film[]): void => {
+export const insertFilms = (db: Database, films: Film[]): void => {
   const insert = db.prepare(INSERT_FILM);
   const insertMany = db.transaction((films) => {
     for (const film of films) {
@@ -46,7 +22,7 @@ export const insertFilms = (db: Database.Database, films: Film[]): void => {
   insertMany(films);
 };
 
-export const getAllFilms = (db: Database.Database): Promise<Film[]> => {
+export const getAllFilms = (db: Database): Promise<Film[]> => {
   return new Promise<Film[]>((resolve) => {
     const stmt = db.prepare(QUERY_FILMS);
     const data = stmt.all(QUERY_FILMS).map<Film>((row) => ({
@@ -59,7 +35,7 @@ export const getAllFilms = (db: Database.Database): Promise<Film[]> => {
   });
 };
 
-export const insertSessions = (db: Database.Database, sessions: Session[]): void => {
+export const insertSessions = (db: Database, sessions: Session[]): void => {
   const insert = db.prepare(INSERT_SESSION);
   const insertMany = db.transaction((sessions) => {
     for (const session of sessions) {
@@ -81,7 +57,7 @@ export const insertSessions = (db: Database.Database, sessions: Session[]): void
   insertMany(sessions);
 };
 
-export const getAllSessions = (db: Database.Database): Promise<Session[]> => {
+export const getAllSessions = (db: Database): Promise<Session[]> => {
   return new Promise<Session[]>((resolve) => {
     const stmt = db.prepare(QUERY_SESSIONS);
     const data = stmt.all(QUERY_SESSIONS).map<Session>((row) => ({
@@ -114,7 +90,7 @@ const entityReducer = <T extends HasID>(result: EntityMap<T>, entity: T) => {
   return result;
 };
 
-export const getAllEntities = async (db: Database.Database) => {
+export const getAllEntities = async (db: Database) => {
   const [films, sessions] = await Promise.all([getAllFilms(db), getAllSessions(db)]);
   return {
     films: films.reduce(entityReducer, {}),
@@ -122,7 +98,7 @@ export const getAllEntities = async (db: Database.Database) => {
   };
 };
 
-export const insertAllEntities = async (db: Database.Database, data: NormalizedSessionData) => {
+export const insertAllEntities = async (db: Database, data: NormalizedSessionData) => {
   const { films, sessions } = data.entities;
   await Promise.all([
     insertFilms(db, Object.values(films)),
