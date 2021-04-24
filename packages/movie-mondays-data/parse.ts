@@ -1,6 +1,8 @@
 import { Film, Session, NormalizedSessionData } from 'movie-mondays-types';
 import { Payload, PayloadFilm, PayloadSession } from './scrape';
 
+export type { NormalizedSessionData };
+
 // Conditions
 export const CONDITION_ALLOCATED_SEATING = 'Allocated seating';
 export const CONDITION_NO_FREE_TICKETS = 'No free tickets';
