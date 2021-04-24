@@ -11,7 +11,7 @@ import { Film, Session, NormalizedSessionData } from './parse';
 
 export const insertFilms = (db: Database, films: Film[]): void => {
   const insert = db.prepare(INSERT_FILM);
-  const insertMany = db.transaction((films) => {
+  const insertMany = db.transaction((films: Film[]) => {
     for (const film of films) {
       insert.run({
         id: film.id,
@@ -54,7 +54,7 @@ export const getFilm = (db: Database, filmId: string): Promise<Film | undefined>
 
 export const insertSessions = (db: Database, sessions: Session[]): void => {
   const insert = db.prepare(INSERT_SESSION);
-  const insertMany = db.transaction((sessions) => {
+  const insertMany = db.transaction((sessions: Session[]) => {
     for (const session of sessions) {
       insert.run({
         id: session.id,
