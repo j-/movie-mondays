@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import { Film, getAllFilms} from 'movie-mondays-data';
+import { Film } from 'movie-mondays-types';
+import { getAllFilms} from 'movie-mondays-data';
 import getDatabase from '../../db';
 import Layout from '../../components/Layout';
 import FilmList from '../../components/FilmList';

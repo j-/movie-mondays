@@ -1,3 +1,4 @@
+import { Film, Session, NormalizedSessionData } from 'movie-mondays-types';
 import { Payload, PayloadFilm, PayloadSession } from './scrape';
 
 // Conditions
@@ -21,27 +22,6 @@ export const RATING_R18 = 'R18+';
 export const RATING_ALL = 'ALL';
 /** http://www.classification.gov.au/Guidelines/Pages/Check-the-Classification.aspx */
 export const RATING_CTC = 'CTC';
-
-export interface Session {
-  id: string;
-  filmId: string;
-  date: string;
-  time: number;
-  isAllocatedSeating: boolean;
-  isNoFreeTickets: boolean;
-  isPreviewScreening: boolean;
-  isSpecialEvent: boolean;
-  isBabyFriendly: boolean;
-  isSellingFast: boolean;
-  isSoldOut: boolean;
-}
-
-export interface Film {
-  id: string;
-  title: string;
-  rating: string;
-  runtimeMinutes: number | null;
-}
 
 /** https://regex101.com/r/KYKFSg/1 */
 const titleExpr = /^(.*?)\s?(?:\(\s?([\w+]*?)\s?\))?\s?(?: - (\d+) MIN)?$/;
@@ -120,18 +100,6 @@ export const parseSession = (payloadSession: PayloadSession) => ({
   ...parseSessionConditions(payloadSession),
   ...parseSessionCapacity(payloadSession),
 });
-
-export interface NormalizedSessionData {
-  result: string[],
-  entities: {
-    sessions: {
-      [sessionId: string]: Session;
-    };
-    films: {
-      [filmId: string]: Film;
-    };
-  };
-}
 
 export const parseSessionData = (payload: Payload): NormalizedSessionData => {
   const sessions: NormalizedSessionData['entities']['sessions'] = {};

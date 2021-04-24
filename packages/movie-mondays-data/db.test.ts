@@ -1,5 +1,6 @@
 import Database from 'better-sqlite3';
 import { CREATE_TABLE_FILM, CREATE_TABLE_SESSION } from 'movie-mondays-db-queries';
+import { Film, Session } from 'movie-mondays-types';
 import {
   getAllEntities,
   getAllFilms,
@@ -10,7 +11,6 @@ import {
   insertFilms,
   insertSessions,
 } from './db';
-import { Film, Session } from './parse';
 
 let db: Database.Database;
 

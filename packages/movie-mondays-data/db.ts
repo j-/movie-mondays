@@ -7,7 +7,7 @@ import {
   QUERY_FILMS,
   QUERY_SESSIONS,
 } from 'movie-mondays-db-queries';
-import { Film, Session, NormalizedSessionData } from './parse';
+import { Film, Session, NormalizedSessionData } from 'movie-mondays-types';
 
 export const insertFilms = (db: Database, films: Film[]): void => {
   const insert = db.prepare(INSERT_FILM);

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Film } from 'movie-mondays-data';
+import { Film } from 'movie-mondays-types';
 
 type Props = {
   data: Film;
