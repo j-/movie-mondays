@@ -1,6 +1,10 @@
 {
   "name": "movie-mondays",
   "private": true,
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "link-convert": "lerna link convert"
+  },
   "devDependencies": {
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
