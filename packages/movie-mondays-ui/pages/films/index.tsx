@@ -8,6 +8,16 @@ type Props = {
   items: Film[]
 }
 
+const titleSort = ({ title: titleA }: Film, { title: titleB }: Film) => {
+  if (titleA > titleB) {
+    return 1;
+  } else if (titleA < titleB) {
+    return -1;
+  } else {
+    return 0;
+  }
+};
+
 const WithStaticProps: React.FC<Props> = ({ items }) => (
   <Layout title="Films List | Next.js + TypeScript Example">
     <h1>Films List</h1>
@@ -16,7 +26,7 @@ const WithStaticProps: React.FC<Props> = ({ items }) => (
     </p>
     <p>You are currently on: /films</p>
     <ul>
-      {items.map((item) => (
+      {items.sort(titleSort).map((item) => (
         <li key={item.id}>{item.title}</li>
       ))}
     </ul>
