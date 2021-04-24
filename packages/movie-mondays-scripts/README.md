@@ -1,5 +1,5 @@
-Movie Mondays
-=============
+Movie Mondays Scripts
+=====================
 
 Fetch session times
 -------------------
