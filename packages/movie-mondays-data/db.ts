@@ -24,32 +24,28 @@ export const insertFilms = (db: Database, films: Film[]): void => {
   insertMany(films);
 };
 
-export const getAllFilms = (db: Database): Promise<Film[]> => {
-  return new Promise<Film[]>((resolve) => {
-    const stmt = db.prepare(QUERY_FILMS);
-    const data = stmt.all().map<Film>((row) => ({
-      id: String(row.id),
-      title: String(row.title),
-      rating: String(row.rating),
-      runtimeMinutes: Number(row.runtimeMinutes),
-    }));
-    resolve(data);
-  });
+export const getAllFilms = async (db: Database): Promise<Film[]> => {
+  const stmt = db.prepare(QUERY_FILMS);
+  const data = stmt.all().map<Film>((row) => ({
+    id: String(row.id),
+    title: String(row.title),
+    rating: String(row.rating),
+    runtimeMinutes: Number(row.runtimeMinutes),
+  }));
+  return data;
 };
 
-export const getFilm = (db: Database, filmId: string): Promise<Film | undefined> => {
-  return new Promise<Film | undefined>((resolve) => {
-    const stmt = db.prepare(QUERY_FILM);
-    const row = stmt.get({ filmId });
-    if (!row) resolve(undefined);
-    const film: Film = {
-      id: String(row.id),
-      title: String(row.title),
-      rating: String(row.rating),
-      runtimeMinutes: Number(row.runtimeMinutes),
-    };
-    resolve(film);
-  });
+export const getFilm = async (db: Database, filmId: string): Promise<Film | undefined> => {
+  const stmt = db.prepare(QUERY_FILM);
+  const row = stmt.get({ filmId });
+  if (!row) return undefined;
+  const film: Film = {
+    id: String(row.id),
+    title: String(row.title),
+    rating: String(row.rating),
+    runtimeMinutes: Number(row.runtimeMinutes),
+  };
+  return film;
 };
 
 export const insertSessions = (db: Database, sessions: Session[]): void => {
@@ -74,44 +70,40 @@ export const insertSessions = (db: Database, sessions: Session[]): void => {
   insertMany(sessions);
 };
 
-export const getAllSessions = (db: Database): Promise<Session[]> => {
-  return new Promise<Session[]>((resolve) => {
-    const stmt = db.prepare(QUERY_SESSIONS);
-    const data = stmt.all().map<Session>((row) => ({
-      id: String(row.id),
-      filmId: String(row.filmId),
-      date: String(row.date),
-      time: Number(row.time),
-      isAllocatedSeating: row.isAllocatedSeating === 1,
-      isNoFreeTickets: row.isNoFreeTickets === 1,
-      isPreviewScreening: row.isPreviewScreening === 1,
-      isSpecialEvent: row.isSpecialEvent === 1,
-      isBabyFriendly: row.isBabyFriendly === 1,
-      isSellingFast: row.isSellingFast === 1,
-      isSoldOut: row.isSoldOut === 1,
-    }));
-    resolve(data);
-  });
+export const getAllSessions = async (db: Database): Promise<Session[]> => {
+  const stmt = db.prepare(QUERY_SESSIONS);
+  const data = stmt.all().map<Session>((row) => ({
+    id: String(row.id),
+    filmId: String(row.filmId),
+    date: String(row.date),
+    time: Number(row.time),
+    isAllocatedSeating: row.isAllocatedSeating === 1,
+    isNoFreeTickets: row.isNoFreeTickets === 1,
+    isPreviewScreening: row.isPreviewScreening === 1,
+    isSpecialEvent: row.isSpecialEvent === 1,
+    isBabyFriendly: row.isBabyFriendly === 1,
+    isSellingFast: row.isSellingFast === 1,
+    isSoldOut: row.isSoldOut === 1,
+  }));
+  return data;
 };
 
-export const getSessionsForFilm = (db: Database, filmId: string): Promise<Session[]> => {
-  return new Promise<Session[]>((resolve) => {
-    const stmt = db.prepare(QUERY_FILM_SESSIONS);
-    const data = stmt.all({ filmId }).map<Session>((row) => ({
-      id: String(row.id),
-      filmId: String(row.filmId),
-      date: String(row.date),
-      time: Number(row.time),
-      isAllocatedSeating: row.isAllocatedSeating === 1,
-      isNoFreeTickets: row.isNoFreeTickets === 1,
-      isPreviewScreening: row.isPreviewScreening === 1,
-      isSpecialEvent: row.isSpecialEvent === 1,
-      isBabyFriendly: row.isBabyFriendly === 1,
-      isSellingFast: row.isSellingFast === 1,
-      isSoldOut: row.isSoldOut === 1,
-    }));
-    resolve(data);
-  });
+export const getSessionsForFilm = async (db: Database, filmId: string): Promise<Session[]> => {
+  const stmt = db.prepare(QUERY_FILM_SESSIONS);
+  const data = stmt.all({ filmId }).map<Session>((row) => ({
+    id: String(row.id),
+    filmId: String(row.filmId),
+    date: String(row.date),
+    time: Number(row.time),
+    isAllocatedSeating: row.isAllocatedSeating === 1,
+    isNoFreeTickets: row.isNoFreeTickets === 1,
+    isPreviewScreening: row.isPreviewScreening === 1,
+    isSpecialEvent: row.isSpecialEvent === 1,
+    isBabyFriendly: row.isBabyFriendly === 1,
+    isSellingFast: row.isSellingFast === 1,
+    isSoldOut: row.isSoldOut === 1,
+  }));
+  return data;
 };
 
 interface EntityMap<T> {
