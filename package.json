@@ -1,11 +1,6 @@
 {
   "name": "movie-mondays",
   "private": true,
-  "dependencies": {
-    "movie-mondays-data": "file:packages/movie-mondays-data",
-    "movie-mondays-scripts": "file:packages/movie-mondays-scripts",
-    "with-typescript": "file:packages/movie-mondays-ui"
-  },
   "devDependencies": {
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
@@ -17,5 +12,10 @@
     "eslint-plugin-react": "^7.23.2",
     "lerna": "^4.0.0",
     "typescript": "4.0"
+  },
+  "dependencies": {
+    "movie-mondays-data": "file:packages/movie-mondays-data",
+    "movie-mondays-scripts": "file:packages/movie-mondays-scripts",
+    "movie-mondays-ui": "file:packages/movie-mondays-ui"
   }
 }
