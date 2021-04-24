@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { Film } from 'movie-mondays-types';
-import { getAllFilms} from 'movie-mondays-data';
+import { getFilmsAfterDate } from 'movie-mondays-data';
 import getDatabase from '../../db';
 import Layout from '../../components/Layout';
 import FilmList from '../../components/FilmList';
@@ -28,7 +28,8 @@ const FilmPage: React.FC<Props> = ({ items }) => (
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const db = getDatabase();
-  const items: Film[] = await getAllFilms(db);
+  const today = new Date().toISOString().substring(0, 10);
+  const items: Film[] = await getFilmsAfterDate(db, today);
   return { props: { items } };
 };
 
