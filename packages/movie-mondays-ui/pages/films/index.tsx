@@ -13,10 +13,6 @@ type Props = {
 const FilmPage: React.FC<Props> = ({ items }) => (
   <Layout title="Films | Movie Mondays">
     <h1>Films List</h1>
-    <p>
-      Example fetching data from inside <code>getStaticProps()</code>.
-    </p>
-    <p>You are currently on: /films</p>
     <FilmList films={items} />
     <p>
       <Link href="/">
