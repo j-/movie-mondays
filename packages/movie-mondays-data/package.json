@@ -1,7 +1,7 @@
 {
   "name": "movie-mondays-data",
   "version": "1.0.0",
-  "description": "",
+  "description": "Scrape and parse Kino data for importing",
   "keywords": [],
   "main": "index.ts",
   "scripts": {

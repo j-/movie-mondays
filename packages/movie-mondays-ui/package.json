@@ -1,6 +1,7 @@
 {
   "name": "movie-mondays-ui",
   "version": "1.0.0",
+  "description": "Next.js server and UI",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next",
