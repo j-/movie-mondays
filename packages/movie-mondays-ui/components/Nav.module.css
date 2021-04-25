@@ -1,5 +1,5 @@
 .nav {
-  @apply flex flex-col flex-grow pb-4 sm:pb-0 sm:flex-row;
+  @apply flex flex-col flex-grow pb-4 mx-5 sm:pb-0 sm:flex-row;
 }
 
 .navItem {

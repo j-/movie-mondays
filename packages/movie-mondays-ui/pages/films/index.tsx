@@ -5,6 +5,7 @@ import { getFilmsAfterDate } from 'movie-mondays-db';
 import getDatabase from '../../db';
 import Layout from '../../components/Layout';
 import FilmList from '../../components/FilmList';
+import typography from '../../components/typography.module.css';
 
 type Props = {
   items: Film[]
@@ -12,7 +13,7 @@ type Props = {
 
 const FilmPage: React.FC<Props> = ({ items }) => (
   <Layout title="Films | Movie Mondays">
-    <h1>Films List</h1>
+    <h1 className={typography.title}>Films List</h1>
     <FilmList films={items} />
     <p>
       <Link href="/">

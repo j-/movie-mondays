@@ -1,4 +1,5 @@
 import { Film, Session } from 'movie-mondays-types';
+import typography from './typography.module.css';
 
 type Props = {
   film: Film;
@@ -7,7 +8,7 @@ type Props = {
 
 const FilmDetails: React.FC<Props> = ({ film, sessions }) => (
   <div>
-    <h1>Detail for {film.title}</h1>
+    <h1 className={typography.title}>Detail for {film.title}</h1>
     <p>ID: {film.id}</p>
     <ol>
       {sessions.map((session) => (
