@@ -1,4 +1,3 @@
-import * as React from 'react';
 import styles from './Rating.module.css';
 
 export interface Props {

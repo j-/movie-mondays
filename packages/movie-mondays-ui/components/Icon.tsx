@@ -1,7 +1,5 @@
 /* https://heroicons.com/ */
 
-import React from 'react';
-
 export type IconProps = React.SVGAttributes<SVGElement>;
 export type Icon = React.FC<IconProps>;
 

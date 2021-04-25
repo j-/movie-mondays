@@ -1,4 +1,3 @@
-import React from 'react';
 import Link from 'next/link';
 import { Film } from 'movie-mondays-types';
 import Rating from './Rating';

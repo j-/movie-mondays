@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Film, Session } from 'movie-mondays-types';
 
 type Props = {
