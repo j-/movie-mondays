@@ -4,6 +4,7 @@ import { Film } from 'movie-mondays-types';
 import FuzzySearch from 'fuzzy-search';
 import { sortFilm } from '../sort';
 import FilmListItem from './FilmListItem';
+import { IconSearch } from './Icon';
 import styles from './FilmList.module.css';
 
 type Props = {
@@ -41,7 +42,12 @@ const FilmList: React.FC<Props> = ({ films }) => {
   }, [searchParam]);
   return (
     <div className={styles.container}>
-      <input className={styles.filter} type="text" value={search} onChange={handleChangeSearch} placeholder="Filter titles" />
+      <div className={styles.filterContainer}>
+        <input className={styles.filterInput} type="text" value={search} onChange={handleChangeSearch} placeholder="Filter titles" />
+        <div className={styles.searchIcon}>
+          <IconSearch />
+        </div>
+      </div>
       <ul>
         {result.sort(sortFilm).map((film) => (
           <li key={film.id}>

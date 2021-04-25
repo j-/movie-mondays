@@ -2,6 +2,15 @@
   @apply bg-gray-50 rounded-3xl p-2 sm:p-5 xl:p-6;
 }
 
-.filter {
-  @apply px-3 py-2 border-2 border-gray-200 rounded-xl hover:border-gray-300 focus:outline-none focus:border-blue-500 transition-colors;
+.filterContainer {
+  @apply relative mt-1;
+  max-width: 20em;
+}
+
+.filterInput {
+  @apply w-full px-3 py-2 border-2 border-gray-200 rounded-xl hover:border-gray-300 focus:outline-none focus:border-blue-500 transition-colors;
+}
+
+.searchIcon {
+  @apply block w-7 h-7 text-center text-xl absolute top-2 right-2 text-gray-400 pointer-events-none;
 }
