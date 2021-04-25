@@ -1,7 +1,7 @@
 import Database from 'better-sqlite3';
-import { CREATE_TABLE_FILM, CREATE_TABLE_SESSION } from 'movie-mondays-db-queries';
 import { Film, Session } from 'movie-mondays-types';
 import {
+  createTables,
   getAllEntities,
   getAllFilms,
   getAllSessions,
@@ -71,10 +71,9 @@ const supernovaSession1: Session = {
   isSpecialEvent: false,
 };
 
-beforeEach(() => {
+beforeEach(async () => {
   db = new Database(':memory:');
-  db.exec(CREATE_TABLE_FILM);
-  db.exec(CREATE_TABLE_SESSION);
+  await createTables(db);
 });
 
 afterEach(() => {

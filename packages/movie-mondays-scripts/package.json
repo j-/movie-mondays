@@ -20,7 +20,6 @@
     "better-sqlite3": "^7.1.4",
     "jsdom": "15.1.1",
     "movie-mondays-data": "file:../movie-mondays-data",
-    "movie-mondays-db-queries": "file:../movie-mondays-db-queries",
     "node-fetch": "^2.6.1",
     "ts-node": "^9.0.0",
     "typescript": "^4.2.4"

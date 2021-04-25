@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { promises } from 'fs';
 import Database from 'better-sqlite3';
-import { CREATE_TABLE_FILM, CREATE_TABLE_SESSION } from 'movie-mondays-db-queries';
+import { createTables } from 'movie-mondays-data/db';
 
 if (process.argv.length < 3) {
   console.error('Usage: npm run db-create -- <filename>');
@@ -25,9 +25,6 @@ const path = resolve(process.cwd(), filename);
   }
 
   const db = new Database(path);
-
-  db.exec(CREATE_TABLE_FILM);
-  db.exec(CREATE_TABLE_SESSION);
-
+  await createTables(db);
   db.close();
 })();
