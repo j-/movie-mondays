@@ -83,14 +83,14 @@ afterEach(() => {
 
 describe('films', () => {
   test('insert and query all films', async () => {
-    insertFilms(db, [minari, supernova]);
+    await insertFilms(db, [minari, supernova]);
     expect(await getAllFilms(db)).toEqual(
       expect.arrayContaining([minari, supernova])
     );
   });
 
   test('insert and query individual films', async () => {
-    insertFilms(db, [minari, supernova]);
+    await insertFilms(db, [minari, supernova]);
     expect(await getFilm(db, 'minari')).toEqual(minari);
     expect(await getFilm(db, 'supernova')).toEqual(supernova);
   });
@@ -100,23 +100,23 @@ describe('films', () => {
   });
 
   test('get films with sessions after a certain date', async () => {
-    insertFilms(db, [minari, supernova]);
-    insertSessions(db, [minariSession1, minariSession2, supernovaSession1]);
+    await insertFilms(db, [minari, supernova]);
+    await insertSessions(db, [minariSession1, minariSession2, supernovaSession1]);
     expect(await getFilmsAfterDate(db, '2021-04-25')).toEqual([supernova]);
   });
 });
 
 describe('sessions', () => {
   test('insert and query all sessions', async () => {
-    insertSessions(db, [minariSession1, minariSession2, supernovaSession1]);
+    await insertSessions(db, [minariSession1, minariSession2, supernovaSession1]);
     expect(await getAllSessions(db)).toEqual(
       expect.arrayContaining([minariSession1, minariSession2, supernovaSession1])
     );
   });
 
   test('insert and query film sessions', async () => {
-    insertFilms(db, [minari, supernova]);
-    insertSessions(db, [minariSession1, minariSession2, supernovaSession1]);
+    await insertFilms(db, [minari, supernova]);
+    await insertSessions(db, [minariSession1, minariSession2, supernovaSession1]);
     expect(await getSessionsForFilm(db, 'minari')).toEqual(
       expect.arrayContaining([minariSession1, minariSession2])
     );

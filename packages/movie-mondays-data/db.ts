@@ -10,7 +10,7 @@ import {
 } from 'movie-mondays-db-queries';
 import { Film, Session, NormalizedSessionData } from 'movie-mondays-types';
 
-export const insertFilms = (db: Database, films: Film[]): void => {
+export const insertFilms = async (db: Database, films: Film[]): Promise<void> => {
   const insert = db.prepare(INSERT_FILM);
   const insertMany = db.transaction((films: Film[]) => {
     for (const film of films) {
@@ -60,7 +60,7 @@ export const getFilmsAfterDate = async (db: Database, sessionDate: string): Prom
   return data;
 };
 
-export const insertSessions = (db: Database, sessions: Session[]): void => {
+export const insertSessions = async (db: Database, sessions: Session[]): Promise<void> => {
   const insert = db.prepare(INSERT_SESSION);
   const insertMany = db.transaction((sessions: Session[]) => {
     for (const session of sessions) {
@@ -139,7 +139,7 @@ export const getAllEntities = async (db: Database) => {
   };
 };
 
-export const insertAllEntities = async (db: Database, data: NormalizedSessionData) => {
+export const insertAllEntities = async (db: Database, data: NormalizedSessionData): Promise<void> => {
   const { films, sessions } = data.entities;
   await Promise.all([
     insertFilms(db, Object.values(films)),
