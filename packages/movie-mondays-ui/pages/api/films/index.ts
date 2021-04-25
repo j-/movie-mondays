@@ -1,8 +1,8 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+import { NextApiHandler } from 'next';
 import { getAllFilms } from 'movie-mondays-db';
 import getDatabase from '../../../db';
 
-const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
+const handler: NextApiHandler = async (_req, res) => {
   try {
     const db = getDatabase();
     const films = await getAllFilms(db);
