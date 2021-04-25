@@ -1,0 +1,43 @@
+.rating {
+  font-weight: normal;
+  font-size: 0.8em;
+  padding: 0.25em;
+  background-color: #444;
+  color: #fff;
+  border-radius: 0.25em;
+}
+
+.rating[title] {
+  cursor: help;
+}
+
+.rating_g {
+  color: #fff;
+  background-color: #23b24b;
+}
+
+.rating_pg {
+  color: #000;
+  background-color: #fff104;
+}
+
+.rating_m {
+  color: #fff;
+  background-color: #00aeef;
+}
+
+.rating_ma {
+  color: #fff;
+  background-color: #ed1b23;
+}
+
+.rating_r,
+.rating_x {
+  color: #fff;
+  background-color: #231f20;
+}
+
+.rating_ctc {
+  color: #000;
+  background-color: #f7931d;
+}
