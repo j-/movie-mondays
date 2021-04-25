@@ -8,7 +8,13 @@ import {
   QUERY_FILMS,
   QUERY_SESSIONS,
 } from 'movie-mondays-db-queries';
-import { Film, Session, NormalizedSessionData } from 'movie-mondays-types';
+import {
+  EntityMap,
+  Film,
+  HasID,
+  NormalizedSessionData,
+  Session,
+} from 'movie-mondays-types';
 
 export const insertFilms = async (db: Database, films: Film[]): Promise<void> => {
   const insert = db.prepare(INSERT_FILM);
@@ -117,14 +123,6 @@ export const getSessionsForFilm = async (db: Database, filmId: string): Promise<
   }));
   return data;
 };
-
-interface EntityMap<T> {
-  [id: string]: T;
-}
-
-interface HasID<T = any> {
-  id: T;
-}
 
 const entityReducer = <T extends HasID>(result: EntityMap<T>, entity: T) => {
   result[entity.id] = entity;

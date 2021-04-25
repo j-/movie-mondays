@@ -30,3 +30,11 @@ export interface NormalizedSessionData {
     };
   };
 }
+
+export interface EntityMap<T> {
+  [id: string]: T;
+}
+
+export interface HasID<T = any> {
+  id: T;
+}
