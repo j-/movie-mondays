@@ -40,6 +40,8 @@ const FilmList: React.FC<Props> = ({ films }) => {
       setSearch(searchParam ?? '');
     }
   }, [searchParam]);
+  const hasFilms = films.length > 0;
+  const hasFilteredItems = result.length > 0;
   return (
     <div className={styles.container}>
       <div className={styles.filterContainer}>
@@ -49,11 +51,14 @@ const FilmList: React.FC<Props> = ({ films }) => {
         </div>
       </div>
       <ul className={styles.filmList}>
-        {result.sort(sortFilm).map((film) => (
-          <li key={film.id} className={styles.filmListItem}>
-            <FilmListItem data={film} />
-          </li>
-        ))}
+        {hasFilms ? (
+          hasFilteredItems ?
+            result.sort(sortFilm).map((film) => (
+              <li key={film.id} className={styles.filmListItem}>
+                <FilmListItem data={film} />
+              </li>
+            )) : <em>There are no films that match</em>
+        ) : <em>There are no films to show</em>}
       </ul>
     </div>
   );
