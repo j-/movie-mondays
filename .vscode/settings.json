@@ -3,11 +3,13 @@
     "source.fixAll.eslint": true
   },
   "eslint.validate": [
+    "html",
     "javascript",
     "javascriptreact",
     "json",
     "jsonc",
     "typescript",
     "typescriptreact"
-  ]
+  ],
+  "css.validate": false
 }
