@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getAllFilms } from 'movie-mondays-data';
+import { getAllFilms } from 'movie-mondays-db';
 import getDatabase from '../../../db';
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {

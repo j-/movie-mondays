@@ -1,6 +1,5 @@
 import { JSDOM } from 'jsdom';
-import { scrapeSessionData } from 'movie-mondays-data/scrape';
-import { parseSessionData } from 'movie-mondays-data/parse';
+import { scrapeAndParse } from 'movie-mondays-data';
 
 let text = '';
 
@@ -16,7 +15,7 @@ process.stdin.on('end', () => {
     const dom = new JSDOM(text, {
       url: 'https://www.palacecinemas.com.au/cinemas/the-kino/',
     });
-    const result = parseSessionData(scrapeSessionData(dom.window));
+    const result = scrapeAndParse(dom.window);
     const string = JSON.stringify(result, null, 2);
     process.stdout.write(string);
   } catch (err) {

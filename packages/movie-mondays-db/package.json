@@ -1,0 +1,23 @@
+{
+  "name": "movie-mondays-db",
+  "version": "1.0.0",
+  "description": "Database interactions",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "better-sqlite3": "^7.1.5",
+    "movie-mondays-types": "file:../movie-mondays-types"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
+  }
+}

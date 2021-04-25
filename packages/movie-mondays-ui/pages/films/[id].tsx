@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { Film, Session } from 'movie-mondays-types';
-import { getAllFilms, getFilm, getSessionsForFilm } from 'movie-mondays-data';
+import { getAllFilms, getFilm, getSessionsForFilm } from 'movie-mondays-db';
 
 import getDatabase from '../../db';
 import Layout from '../../components/Layout';

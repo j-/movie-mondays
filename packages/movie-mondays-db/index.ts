@@ -1,5 +1,12 @@
 import { Database } from 'better-sqlite3';
 import {
+  EntityMap,
+  Film,
+  HasID,
+  NormalizedSessionData,
+  Session,
+} from 'movie-mondays-types';
+import {
   CREATE_TABLE_FILM,
   CREATE_TABLE_SESSION,
   INSERT_FILM,
@@ -9,14 +16,7 @@ import {
   QUERY_FILMS_AFTER_DATE,
   QUERY_FILMS,
   QUERY_SESSIONS,
-} from 'movie-mondays-db-queries';
-import {
-  EntityMap,
-  Film,
-  HasID,
-  NormalizedSessionData,
-  Session,
-} from 'movie-mondays-types';
+} from './queries';
 
 export const createTables = async (db: Database): Promise<void> => {
   db.exec(CREATE_TABLE_FILM);

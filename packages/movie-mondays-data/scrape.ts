@@ -44,6 +44,6 @@ const getDayFromElement = (dayElement: HTMLElement): PayloadDay => {
   return { day, films };
 };
 
-export const scrapeSessionData = ({ document }: Window): Payload => (
+export const scrapeSessionData = ({ document }: Pick<Window, 'document'>): Payload => (
   Array.from(document.querySelectorAll<HTMLElement>('.quick-sessions-day'), getDayFromElement)
 );

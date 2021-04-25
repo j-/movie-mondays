@@ -11,7 +11,7 @@ import {
   insertAllEntities,
   insertFilms,
   insertSessions,
-} from './db';
+} from '.';
 
 let db: Database.Database;
 

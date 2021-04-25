@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import { promises } from 'fs';
 import Database from 'better-sqlite3';
-import { createTables } from 'movie-mondays-data/db';
+import { createTables } from 'movie-mondays-db';
 
 if (process.argv.length < 3) {
   console.error('Usage: npm run db-create -- <filename>');

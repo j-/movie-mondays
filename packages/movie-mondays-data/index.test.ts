@@ -1,8 +1,7 @@
 import * as fs from 'fs';
 import { resolve } from 'path';
 import { JSDOM } from 'jsdom';
-import { scrapeSessionData } from '../scrape';
-import { parseSessionData } from '../parse';
+import { scrapeAndParse } from '.';
 
 test.each([
   ['2019-09-11_00-00', 48, 343],
@@ -16,12 +15,12 @@ test.each([
   ['2020-11-27_11-33', 58, 235],
   ['2021-04-08_18-59', 45, 291],
 ])('%p: %p films, %p sessions', async (basename, films, sessions) => {
-  const path = resolve(__dirname, './res', basename + '.html');
+  const path = resolve(__dirname, './test/res', basename + '.html');
   const html = await fs.promises.readFile(path, 'utf-8');
   const dom = new JSDOM(html, {
     url: 'https://www.palacecinemas.com.au/cinemas/the-kino/',
   });
-  const data = parseSessionData(scrapeSessionData(dom.window));
+  const data = scrapeAndParse(dom.window);
   expect(Object.keys(data.entities.films).length).toBe(films);
   expect(Object.keys(data.entities.sessions).length).toBe(sessions);
   expect(data.result).toHaveLength(sessions);
