@@ -14,3 +14,7 @@
 .searchIcon {
   @apply block w-7 h-7 text-center text-xl absolute top-2 right-2 text-gray-400 pointer-events-none;
 }
+
+.filmList {
+  @apply my-2;
+}

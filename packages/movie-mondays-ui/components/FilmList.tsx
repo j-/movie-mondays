@@ -48,9 +48,9 @@ const FilmList: React.FC<Props> = ({ films }) => {
           <IconSearch />
         </div>
       </div>
-      <ul>
+      <ul className={styles.filmList}>
         {result.sort(sortFilm).map((film) => (
-          <li key={film.id}>
+          <li key={film.id} className={styles.filmListItem}>
             <FilmListItem data={film} />
           </li>
         ))}
