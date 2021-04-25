@@ -1,0 +1,11 @@
+.container {
+  @apply bg-gray-50 rounded-3xl p-5 sm:p-5 xl:py-6 xl:px-9;
+}
+
+.title {
+  @apply text-2xl;
+}
+
+.filmTitle {
+  @apply text-lg pt-2 pb-1;
+}

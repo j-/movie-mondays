@@ -1,4 +1,4 @@
-import { Film } from 'movie-mondays-types';
+import { Film, Session } from 'movie-mondays-types';
 
 const canonicalExpr = /^(?:(The) )(.*?)$/;
 
@@ -18,4 +18,12 @@ export const sortTitle = (left: string, right: string) => {
 
 export const sortFilm = (left: Film, right: Film) => {
   return sortTitle(left.title, right.title);
+};
+
+export const sortTime = (left: number, right: number) => {
+  return left - right;
+};
+
+export const sortSession = (left: Session, right: Session) => {
+  return sortTime(left.time, right.time);
 };
