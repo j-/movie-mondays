@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 type Props = {
-  children?: ReactNode
-  title?: string
+  children?: ReactNode;
+  title?: string;
 }
 
 const Layout: React.FC<Props> = ({ children, title = 'Movie Mondays' }) => (
