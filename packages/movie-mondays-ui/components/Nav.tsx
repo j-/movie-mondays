@@ -1,19 +1,17 @@
 import Link from 'next/link';
+import styles from './Nav.module.css';
 
 const Nav: React.FC = () => (
-  <nav>
+  <nav className={styles.nav}>
     <Link href="/">
-      <a>Home</a>
-    </Link>{' '}
-    |{' '}
+      <a className={styles.navItem}>Home</a>
+    </Link>
     <Link href="/about">
-      <a>About</a>
-    </Link>{' '}
-    |{' '}
+      <a className={styles.navItem}>About</a>
+    </Link>
     <Link href="/films">
-      <a>Films List</a>
-    </Link>{' '}
-    | <a href="/api/films">Films API</a>
+      <a className={styles.navItem}>Films List</a>
+    </Link>
   </nav>
 );
 
