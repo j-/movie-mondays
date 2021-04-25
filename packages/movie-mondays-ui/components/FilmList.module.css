@@ -1,3 +1,7 @@
-.FilmList {
+.container {
   @apply bg-gray-50 rounded-3xl p-2 sm:p-5 xl:p-6;
+}
+
+.filter {
+  @apply px-3 py-2 border-2 border-gray-200 rounded-xl hover:border-gray-300 focus:outline-none focus:border-blue-500 transition-colors;
 }

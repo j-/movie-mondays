@@ -40,8 +40,8 @@ const FilmList: React.FC<Props> = ({ films }) => {
     }
   }, [searchParam]);
   return (
-    <div className={styles.FilmList}>
-      <input type="text" value={search} onChange={handleChangeSearch} />
+    <div className={styles.container}>
+      <input className={styles.filter} type="text" value={search} onChange={handleChangeSearch} placeholder="Filter titles" />
       <ul>
         {result.sort(sortFilm).map((film) => (
           <li key={film.id}>
