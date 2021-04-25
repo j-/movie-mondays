@@ -9,6 +9,9 @@ const Nav: React.FC = () => (
     <Link href="/about">
       <a className={styles.navItem}>About</a>
     </Link>
+    <Link href="/sessions">
+      <a className={styles.navItem}>Sessions</a>
+    </Link>
     <Link href="/films">
       <a className={styles.navItem}>Films List</a>
     </Link>
