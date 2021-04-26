@@ -8,7 +8,7 @@ const getRatingTitle = (rating: string) => {
   switch (rating) {
     case 'G': return 'General';
     case 'PG': return 'Parental Guidance';
-    case 'M': return 'Mature';
+    case 'M': case 'M15': case '15': return 'Mature';
     case 'MA15+': case '15+': return 'Mature Accompanied';
     case 'R18+': case '18+': return 'Restricted';
     case 'CTC': return 'Check the Classification';
@@ -20,7 +20,7 @@ const getRatingClassName = (rating: string) => {
   switch (rating) {
     case 'G': return styles.rating_g;
     case 'PG': return styles.rating_pg;
-    case 'M': return styles.rating_m;
+    case 'M': case 'M15': case '15': return styles.rating_m;
     case 'MA15+': case '15+': return styles.rating_ma;
     case 'R18+': case '18+': return styles.rating_r;
     case 'CTC': return styles.rating_ctc;
