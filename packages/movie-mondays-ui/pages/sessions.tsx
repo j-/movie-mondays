@@ -31,7 +31,7 @@ const SessionsPage: React.FC<Props> = ({ sessions, films }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const db = getDatabase();
+  const db = await getDatabase();
   const [films, sessions] = await Promise.all([getAllFilms(db), getAllSessions(db)]);
   return { props: { films, sessions } };
 };

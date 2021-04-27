@@ -33,7 +33,7 @@ const StaticPropsDetail: React.FC<Props> = ({ film, sessions, errors }) => {
 export default StaticPropsDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const db = getDatabase();
+  const db = await getDatabase();
   // Get the paths we want to pre-render based on films
   const paths = (await getAllFilms(db)).map((film) => ({
     params: { id: film.id.toString() },
@@ -49,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 // direct database queries.
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   try {
-    const db = getDatabase();
+    const db = await getDatabase();
     const id = String(params?.id);
     const [film, sessions] = await Promise.all([
       getFilm(db, id),

@@ -1,5 +1,5 @@
 export const CREATE_TABLE_FILM = `
-  CREATE TABLE \`film\` (
+  CREATE TABLE IF NOT EXISTS \`film\` (
     \`id\` TEXT NOT NULL,
     \`title\` INTEGER NOT NULL,
     \`rating\` INTEGER NOT NULL,
@@ -48,7 +48,7 @@ export const QUERY_FILMS_AFTER_DATE = `
 `;
 
 export const CREATE_TABLE_SESSION = `
-  CREATE TABLE \`session\` (
+  CREATE TABLE IF NOT EXISTS \`session\` (
     \`id\` INTEGER NOT NULL UNIQUE,
     \`filmId\` TEXT NOT NULL,
     \`date\` TEXT NOT NULL,

@@ -24,7 +24,7 @@ const FilmPage: React.FC<Props> = ({ items }) => (
 );
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const db = getDatabase();
+  const db = await getDatabase();
   const today = new Date().toISOString().substring(0, 10);
   const items: Film[] = await getFilmsAfterDate(db, today);
   return { props: { items } };

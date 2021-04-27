@@ -4,7 +4,7 @@ import getDatabase from '../../../db';
 
 const handler: NextApiHandler = async (_req, res) => {
   try {
-    const db = getDatabase();
+    const db = await getDatabase();
     const films = await getAllFilms(db);
 
     if (!Array.isArray(films)) {
