@@ -1,6 +1,7 @@
 import { Film, Session } from 'movie-mondays-types';
 import { getSessionsForFilm } from '../utils';
 import Rating from './Rating';
+import SessionList from './SessionList';
 import styles from './DaySessions.module.css';
 
 type Props = {
@@ -16,13 +17,7 @@ const DaySessions: React.FC<Props> = ({ day, films, sessions }) => {
       {films.map((film) => (
         <div key={film.id}>
           <h3 className={styles.filmTitle}>{film.title} <Rating rating={film.rating} /></h3>
-          <ol>
-            {getSessionsForFilm(sessions, film.id).map((session) => (
-              <li key={session.id}>
-                {session.time}
-              </li>
-            ))}
-          </ol>
+          <SessionList sessions={getSessionsForFilm(sessions, film.id)} />
         </div>
       ))}
     </div>

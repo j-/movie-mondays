@@ -1,0 +1,15 @@
+.session {
+  @apply tabular-nums;
+}
+
+.session_past {
+  @apply opacity-50;
+}
+
+.session_isSellingFast {
+
+}
+
+.session_isSoldOut {
+
+}

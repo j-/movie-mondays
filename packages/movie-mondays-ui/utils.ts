@@ -26,3 +26,9 @@ export const formatDate = (date: Date) => {
 };
 
 export const formatToday = () => formatDate(new Date());
+
+export const formatTime = (date: Date) => {
+  return date.getHours() * 100 + date.getMinutes();
+};
+
+export const formatNow = () => formatTime(new Date());
