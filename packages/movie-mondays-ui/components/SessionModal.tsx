@@ -1,6 +1,6 @@
 import { Film, Session } from 'movie-mondays-types';
 import { formatStringAsTime } from '../utils';
-import Rating from './Rating';
+import FilmTitle from './FilmTitle';
 import Timeline from './Timeline';
 
 type Props = {
@@ -15,13 +15,8 @@ const SessionModal: React.FC<Props> = ({ film, session }) => (
       <div className="flex flex-col items-start p-4">
         <div className="flex items-center w-full">
           <div className="text-lg font-medium">
-            <span className="mr-2 text-gray-900">
-              {film.title}
-            </span>
-            <span className="mr-2">
-              <Rating rating={film.rating} />
-            </span>
-            <span className="text-gray-700">
+            <FilmTitle film={film} />
+            <span className="ml-2 text-sm text-gray-700">
               {formatStringAsTime(session.time)}
             </span>
           </div>

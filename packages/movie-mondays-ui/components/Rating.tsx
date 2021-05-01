@@ -28,6 +28,7 @@ const getRatingClassName = (rating: string) => {
   }
 };
 
+/** @deprecated */
 const Rating: React.FC<Props> = ({ rating }) => {
   const className = styles.rating + ' ' + getRatingClassName(rating);
   const title = getRatingTitle(rating);

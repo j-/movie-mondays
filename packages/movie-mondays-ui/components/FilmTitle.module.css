@@ -1,0 +1,33 @@
+.filmTitle {
+  @apply inline-flex items-center p-2 text-sm leading-none text-gray-800 bg-white rounded-full shadow hover:bg-gray-100;
+}
+
+.filmTitleRating {
+  @apply inline-flex items-center justify-center h-6 px-3 bg-gray-800 text-white rounded-full;
+  width: 4em;
+}
+
+.filmTitleText {
+  @apply inline-flex px-2;
+}
+
+.rating_G.filmTitle { @apply text-green-600; }
+.rating_G.filmTitle .filmTitleRating { @apply bg-green-600; }
+
+.rating_PG.filmTitle { @apply text-yellow-400; }
+.rating_PG.filmTitle .filmTitleRating { @apply bg-yellow-300; }
+
+.rating_M.filmTitle { @apply text-blue-500; }
+.rating_M.filmTitle .filmTitleRating { @apply bg-blue-600; }
+
+.rating_MA15.filmTitle { @apply text-red-500; }
+.rating_MA15.filmTitle .filmTitleRating { @apply bg-red-500; }
+
+.rating_R18.filmTitle { @apply text-black; }
+.rating_R18.filmTitle .filmTitleRating { @apply bg-black; }
+
+.rating_X18.filmTitle { @apply text-black; }
+.rating_X18.filmTitle .filmTitleRating { @apply bg-black; }
+
+.rating_CTC.filmTitle { @apply text-yellow-500; }
+.rating_CTC.filmTitle .filmTitleRating { @apply bg-yellow-500; }
