@@ -62,12 +62,8 @@ export const getRating = (ratingString: string): Rating => {
 export interface NormalizedSessionData {
   result: string[];
   entities: {
-    sessions: {
-      [sessionId: string]: Session;
-    };
-    films: {
-      [filmId: string]: Film;
-    };
+    sessions: EntityMap<Session>;
+    films: EntityMap<Film>;
   };
 }
 
