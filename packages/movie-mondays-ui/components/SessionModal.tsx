@@ -1,6 +1,7 @@
 import { Film, Session } from 'movie-mondays-types';
 import { formatStringAsTime } from '../utils';
 import Rating from './Rating';
+import Timeline from './Timeline';
 
 type Props = {
   film: Film;
@@ -29,7 +30,9 @@ const SessionModal: React.FC<Props> = ({ film, session }) => (
           </svg>
         </div>
         <hr />
-        <div className="my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        <div className="w-full my-5">
+          {film.runtimeMinutes && <Timeline runtimeMinutes={film.runtimeMinutes} timeTrailers={session.time} />}
+        </div>
         <hr />
         <div className="ml-auto">
           <button className="px-4 py-2 mr-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
