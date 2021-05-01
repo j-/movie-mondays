@@ -14,17 +14,6 @@ export const CONDITION_BABY_FRIENDLY = 'Baby-friendly session';
 export const CAPACITY_SELLING_FAST = 'SELLING FAST';
 export const CAPACITY_SOLD_OUT = 'SOLD OUT';
 
-// Ratings
-export const RATING_G = 'G';
-export const RATING_PG = 'PG';
-export const RATING_M = 'M';
-export const RATING_15 = '15+';
-export const RATING_MA15 = 'MA15+';
-export const RATING_R18 = 'R18+';
-export const RATING_ALL = 'ALL';
-/** http://www.classification.gov.au/Guidelines/Pages/Check-the-Classification.aspx */
-export const RATING_CTC = 'CTC';
-
 /** https://regex101.com/r/KYKFSg/1 */
 const titleExpr = /^(.*?)\s?(?:\(\s?([\w+]*?)\s?\))?\s?(?: - (\d+) MIN)?$/;
 const timeExpr = /^(\d+):(\d{2})(am|pm)$/;
