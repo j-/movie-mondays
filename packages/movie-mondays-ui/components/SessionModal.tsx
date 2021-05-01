@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { Film, Session } from 'movie-mondays-types';
 import { formatStringAsTime } from '../utils';
 import FilmTitle from './FilmTitle';
@@ -29,13 +30,12 @@ const SessionModal: React.FC<Props> = ({ film, session }) => (
           {film.runtimeMinutes && <Timeline runtimeMinutes={film.runtimeMinutes} timeTrailers={session.time} />}
         </div>
         <hr />
-        <div className="ml-auto">
-          <button className="px-4 py-2 mr-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
-          Agree
-          </button>
-          <button className="px-4 py-2 font-semibold text-blue-700 bg-transparent border border-blue-500 rounded hover:bg-gray-500 hover:text-white hover:border-transparent">
-          Close
-          </button>
+        <div className="my-2 ml-auto">
+          <Link href={`https://ticketing.palacecinemas.com.au/Ticketing/visSelectTickets.aspx?cinemacode=300&txtSessionId=${session.id}`}>
+            <a className="px-4 py-2 font-semibold text-blue-700 bg-transparent border border-blue-500 rounded hover:bg-blue-800 hover:text-white hover:border-transparent">
+              Buy tickets
+            </a>
+          </Link>
         </div>
       </div>
     </div>
