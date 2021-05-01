@@ -11,7 +11,7 @@ const SessionListItem: React.FC<Props> = ({ session }) => {
   const now = useNow();
   const today = useToday();
   const { date, time, isSellingFast, isSoldOut } = session;
-  const classNames = [styles.session];
+  const classNames = [styles.session, 'tabular-nums'];
   if (today >= date && now > time) classNames.push(styles.session_past);
   if (isSellingFast) classNames.push(styles.session_isSellingFast);
   if (isSoldOut) classNames.push(styles.session_isSoldOut);
