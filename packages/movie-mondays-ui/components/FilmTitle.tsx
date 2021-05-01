@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import { Film, getRating, Rating } from 'movie-mondays-types';
 import styles from './FilmTitle.module.css';
 
@@ -9,7 +9,7 @@ type Props = {
 
 const getClassName = (film: Film) => {
   const rating = getRating(film.rating);
-  return classnames(styles.filmTitle, {
+  return classNames(styles.filmTitle, {
     [styles.rating_G]: rating === Rating.G,
     [styles.rating_PG]: rating === Rating.PG,
     [styles.rating_M]: rating === Rating.M,
