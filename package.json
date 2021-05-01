@@ -4,9 +4,15 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "dev": "cd packages/movie-mondays-ui && npm run dev",
-    "link-convert": "lerna link convert"
+    "link-convert": "lerna link convert",
+    "storybook": "cd packages/movie-mondays-ui && npm run storybook"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
     "@types/better-sqlite3": "^5.4.1",
     "@types/fuzzy-search": "^2.1.0",
     "@types/jest": "^26.0.22",
@@ -18,6 +24,7 @@
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.25.0",
     "eslint-plugin-json-format": "^2.0.1",
     "eslint-plugin-react": "^7.23.2",
@@ -26,10 +33,11 @@
     "lerna": "^4.0.0",
     "next": "^10.2.0",
     "postcss": "^8.2.13",
+    "storybook-css-modules-preset": "^1.0.8",
     "tailwindcss": "^2.1.2",
     "ts-jest": "^26.5.5",
     "ts-node": "^9.1.1",
-    "typescript": "4.0"
+    "typescript": "^4.2.4"
   },
   "dependencies": {
     "movie-mondays-data": "file:packages/movie-mondays-data",
