@@ -7,7 +7,7 @@ type Props = {
   session: Session;
 }
 
-const SessionList: React.FC<Props> = ({ session }) => {
+const SessionListItem: React.FC<Props> = ({ session }) => {
   const now = useNow();
   const today = useToday();
   const { date, time, isSellingFast, isSoldOut } = session;
@@ -18,4 +18,4 @@ const SessionList: React.FC<Props> = ({ session }) => {
   return <div className={classNames.join(' ')}>{session.time}</div>;
 };
 
-export default SessionList;
+export default SessionListItem;
