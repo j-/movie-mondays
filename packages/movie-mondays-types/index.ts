@@ -12,6 +12,15 @@ export interface Session {
   isSoldOut: boolean;
 }
 
+export type Condition =
+  | 'isAllocatedSeating'
+  | 'isNoFreeTickets'
+  | 'isPreviewScreening'
+  | 'isSpecialEvent'
+  | 'isBabyFriendly'
+  | 'isSellingFast'
+  | 'isSoldOut';
+
 export interface Film {
   id: string;
   title: string;
