@@ -112,3 +112,20 @@ export const QUERY_FILM_SESSIONS = `
   ${QUERY_SESSIONS}
   WHERE filmId = $filmId
 `;
+
+export const QUERY_SESSIONS_AFTER_DATE = `
+  SELECT
+    id,
+    filmId,
+    date,
+    time,
+    isAllocatedSeating,
+    isNoFreeTickets,
+    isPreviewScreening,
+    isSpecialEvent,
+    isBabyFriendly,
+    isSellingFast,
+    isSoldOut
+  FROM session
+  WHERE date >= $sessionDate
+`;

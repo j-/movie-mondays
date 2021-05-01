@@ -16,6 +16,7 @@ import {
   QUERY_FILMS_AFTER_DATE,
   QUERY_FILMS,
   QUERY_SESSIONS,
+  QUERY_SESSIONS_AFTER_DATE,
 } from './queries';
 
 export const createTables = async (db: Database): Promise<void> => {
@@ -131,6 +132,24 @@ export const getSessionsForFilm = async (db: Database, filmId: string): Promise<
   return data;
 };
 
+export const getSessionsAfterDate = async (db: Database, sessionDate: string): Promise<Session[]> => {
+  const stmt = db.prepare(QUERY_SESSIONS_AFTER_DATE);
+  const data = stmt.all({ sessionDate }).map<Session>((row) => ({
+    id: String(row.id),
+    filmId: String(row.filmId),
+    date: String(row.date),
+    time: Number(row.time),
+    isAllocatedSeating: row.isAllocatedSeating === 1,
+    isNoFreeTickets: row.isNoFreeTickets === 1,
+    isPreviewScreening: row.isPreviewScreening === 1,
+    isSpecialEvent: row.isSpecialEvent === 1,
+    isBabyFriendly: row.isBabyFriendly === 1,
+    isSellingFast: row.isSellingFast === 1,
+    isSoldOut: row.isSoldOut === 1,
+  }));
+  return data;
+};
+
 const entityReducer = <T extends HasID>(result: EntityMap<T>, entity: T) => {
   result[entity.id] = entity;
   return result;
@@ -138,6 +157,14 @@ const entityReducer = <T extends HasID>(result: EntityMap<T>, entity: T) => {
 
 export const getAllEntities = async (db: Database) => {
   const [films, sessions] = await Promise.all([getAllFilms(db), getAllSessions(db)]);
+  return {
+    films: films.reduce(entityReducer, {}),
+    sessions: sessions.reduce(entityReducer, {}),
+  };
+};
+
+export const getAllEntitiesAfterDate = async (db: Database, sessionDate: string) => {
+  const [films, sessions] = await Promise.all([getFilmsAfterDate(db, sessionDate), getSessionsAfterDate(db, sessionDate)]);
   return {
     films: films.reduce(entityReducer, {}),
     sessions: sessions.reduce(entityReducer, {}),

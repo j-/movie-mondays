@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { Film, Session } from 'movie-mondays-types';
-import { getAllFilms, getAllSessions } from 'movie-mondays-db';
+import { getFilmsAfterDate, getSessionsAfterDate } from 'movie-mondays-db';
 import getDatabase from '../db';
 import Layout from '../components/Layout';
 import DaySessions from '../components/DaySessions';
@@ -31,8 +31,9 @@ const SessionsPage: React.FC<Props> = ({ sessions, films }) => {
 };
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
+  const today = formatToday();
   const db = await getDatabase();
-  const [films, sessions] = await Promise.all([getAllFilms(db), getAllSessions(db)]);
+  const [films, sessions] = await Promise.all([getFilmsAfterDate(db, today), getSessionsAfterDate(db, today)]);
   return { props: { films, sessions } };
 };
 
