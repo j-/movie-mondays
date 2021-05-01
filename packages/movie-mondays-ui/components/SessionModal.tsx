@@ -1,4 +1,5 @@
 import { Film, Session } from 'movie-mondays-types';
+import { formatStringAsTime } from '../utils';
 
 type Props = {
   film: Film;
@@ -16,7 +17,7 @@ const SessionModal: React.FC<Props> = ({ film, session }) => (
               {film.title}
             </span>
             <span className="text-gray-700">
-              {session.time}
+              {formatStringAsTime(session.time)}
             </span>
           </div>
           <svg className="w-6 h-6 ml-auto text-gray-700 cursor-pointer fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">

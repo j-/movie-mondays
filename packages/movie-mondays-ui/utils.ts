@@ -27,8 +27,15 @@ export const formatDate = (date: Date) => {
 
 export const formatToday = () => formatDate(new Date());
 
-export const formatTime = (date: Date) => {
+export const formatDateAsTime = (date: Date) => {
   return date.getHours() * 100 + date.getMinutes();
 };
 
-export const formatNow = () => formatTime(new Date());
+export const formatNow = () => formatDateAsTime(new Date());
+
+export const formatStringAsTime = (time: number) => {
+  const hh = Math.floor(time / 100) % 12 || 12;
+  const mm = String(time % 100).padStart(2, '0');
+  const ampm = time < 1200 ? 'am' : 'pm';
+  return `${hh}:${mm}${ampm}`;
+};
