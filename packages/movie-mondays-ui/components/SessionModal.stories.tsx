@@ -7,12 +7,18 @@ type SessionModalProps = React.ComponentProps<typeof SessionModal>;
 export default {
   title: 'SessionModal',
   component: SessionModal,
+  parameters: {
+    actions: {
+      argTypesRegex: '^on.*',
+    },
+  },
 } as Meta;
 
 const Template: Story<SessionModalProps> = (args) => <SessionModal {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  isOpen: true,
   film: {
     id: 'the-courier',
     title: 'The Courier',

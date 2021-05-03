@@ -1,0 +1,35 @@
+.overlay {
+  @apply fixed bottom-0 left-0 flex items-center justify-center w-full h-full bg-gray-800;
+}
+
+.modal {
+  @apply w-1/2 bg-white rounded-lg flex flex-col;
+}
+
+.header {
+  @apply flex items-center;
+}
+
+.body {
+  @apply my-5;
+}
+
+.footer {
+  @apply my-2;
+}
+
+.header, .body, .footer {
+  @apply p-2;
+}
+
+.close {
+  @apply px-4 py-2 ml-auto text-gray-700 rounded-md hover:bg-gray-100;
+}
+
+.closeIcon {
+  @apply w-5 h-5 text-gray-700 cursor-pointer fill-current;
+}
+
+.buy {
+  @apply px-4 py-2 text-blue-700 bg-transparent border border-blue-500 rounded hover:bg-blue-800 hover:text-white hover:border-transparent;
+}
