@@ -32,7 +32,7 @@
     "eslint-plugin-tailwind": "^0.2.1",
     "jest": "^26.6.3",
     "lerna": "^4.0.0",
-    "next": "^10.2.0",
+    "next": "^12.1.0",
     "postcss": "^8.2.13",
     "storybook-css-modules-preset": "^1.0.8",
     "tailwindcss": "^2.1.2",
