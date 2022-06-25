@@ -16,7 +16,7 @@
     }
   },
   "dependencies": {
-    "jsdom": "15.1.1",
+    "jsdom": "16.5.0",
     "movie-mondays-types": "file:../movie-mondays-types"
   }
 }
