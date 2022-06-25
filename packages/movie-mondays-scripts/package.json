@@ -18,7 +18,7 @@
     "@types/node": "12.7.5",
     "@types/node-fetch": "2.5.0",
     "better-sqlite3": "^7.1.4",
-    "jsdom": "15.1.1",
+    "jsdom": "16.5.0",
     "movie-mondays-data": "file:../movie-mondays-data",
     "movie-mondays-db": "file:../movie-mondays-db",
     "node-fetch": "^2.6.1",
